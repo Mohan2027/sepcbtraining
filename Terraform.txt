@@ -1,0 +1,5 @@
+Terraform in the IAC tools
+Terraform init
+Terraform plan
+Terraform Apply
+Terraform Destroy
