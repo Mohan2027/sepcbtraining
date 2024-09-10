@@ -1,0 +1,47 @@
+ansible <all/hostname> -m <module> -a "commands"
+ 
+Ansible Module:-
+****************
+Yum module
+ansible webserver -m yum -a "name=httpd state=present"
+
+hostgroup = webserver/dbserver
+packagename = httpd,firefox,vftpd,
+state = present , absent
+
+Service Module
+ansible webserver -m service -a "name=httpd state=started"
+
+hostgroup = webserver/dbserver
+packagename = httpd,firefox,vftpd,
+state = started , stoped , restarted
+
+copy Module
+ansible webserver -m copy -a "src=<sourcelocation> dest=<destlocation>"
+
+hostgroup = webserver/dbserver
+src = source location
+dest = destination location
+
+Shell Module
+ansible webserver -m shell -a "cat /root/index.html"
+
+hostgroup = webserver/dbserver
+commands  = any linux/unix commands
+
+Ping Module
+ansible webserver -m ping 
+
+TO intract with AWS:-
+Prerequesties:-
+Python2.7 / python 3.6
+yum install python python-pip
+pip install boto3
+Boto3 
+
+https://www.infinitypp.com/ansible/create-vpc-ansible-aws/     => Example ansible playbooks reference
+https://docs.ansible.com/ansible/latest/collections/amazon/aws => AWS Ansible Playbook Modules reference
+
+
+
+
