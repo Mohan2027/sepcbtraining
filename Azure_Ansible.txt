@@ -1,0 +1,39 @@
+#Azure Ansible installation in Azure VM
+#!/bin/bash
+
+# Update all packages that have available updates.
+sudo yum update -y
+
+# Install Python 3 and pip.
+sudo yum install -y python3-pip
+
+# Upgrade pip3.
+sudo pip3 install --upgrade pip
+
+# Install Ansible.
+pip3 install "ansible==2.9.17"
+
+# Install Ansible azure_rm module for interacting with Azure.
+pip3 install ansible[azure]
+
+
+Azure CLI Installation
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+echo -e "[azure-cli]
+name=Azure CLI
+baseurl=https://packages.microsoft.com/yumrepos/azure-cli
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/azure-cli.repo
+
+yum info azure-cli
+yum install azure-cli -y
+
+az login
+
+https://microsoft.com/devicelogin and enter the code _______ to authenticate.
+
+az account show
+
+az ad sp create-for-rbac --name ansible
